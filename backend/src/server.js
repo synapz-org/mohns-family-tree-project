@@ -4,7 +4,6 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const slowDown = require('express-slow-down');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
@@ -60,14 +59,7 @@ const limiter = rateLimit({
     legacyHeaders: false,
 });
 
-const speedLimiter = slowDown({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    delayAfter: 50, // allow 50 requests per 15 minutes, then...
-    delayMs: 500, // begin adding 500ms of delay per request above 50
-});
-
 app.use('/api/', limiter);
-app.use('/api/', speedLimiter);
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
@@ -104,49 +96,26 @@ app.use('/api/privacy', authMiddleware, privacyRoutes);
 app.use('/api/reunion', authMiddleware, reunionRoutes);
 app.use('/api/notifications', authMiddleware, notificationRoutes);
 
-// Swagger documentation
+// Swagger documentation - to be implemented in Phase 2
 if (process.env.NODE_ENV !== 'production') {
-    const swaggerJsdoc = require('swagger-jsdoc');
-    const swaggerUi = require('swagger-ui-express');
-
-    const options = {
-        definition: {
-            openapi: '3.0.0',
-            info: {
-                title: 'Mohns Family Tree API',
-                version: '1.0.0',
-                description: 'API documentation for the Mohns Family Tree Management System',
-                contact: {
-                    name: 'Mohns Family Tree Project',
-                    email: 'family@mohns.com',
-                },
-            },
-            servers: [
-                {
-                    url: `http://localhost:${PORT}`,
-                    description: 'Development server',
-                },
-            ],
-            components: {
-                securitySchemes: {
-                    bearerAuth: {
-                        type: 'http',
-                        scheme: 'bearer',
-                        bearerFormat: 'JWT',
-                    },
-                },
-            },
-            security: [
-                {
-                    bearerAuth: [],
-                },
-            ],
-        },
-        apis: ['./src/routes/*.js', './src/models/*.js'],
-    };
-
-    const specs = swaggerJsdoc(options);
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+    app.get('/api-docs', (req, res) => {
+        res.json({
+            message: 'API documentation will be available in Phase 2',
+            endpoints: [
+                '/api/auth/login',
+                '/api/auth/register',
+                '/api/auth/validate',
+                '/api/users/profile',
+                '/api/family/members',
+                '/api/family/branches',
+                '/api/stories',
+                '/api/books',
+                '/api/privacy/settings',
+                '/api/reunion/info',
+                '/api/notifications'
+            ]
+        });
+    });
 }
 
 // Error handling middleware
