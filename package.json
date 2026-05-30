@@ -1,7 +1,7 @@
 {
     "name": "family-tree-manager",
     "version": "1.0.0",
-    "description": "Comprehensive web-based family tree management system for multi-generational family coordination",
+    "description": "Mohns Family Tree - Comprehensive web-based family tree management system for multi-generational family coordination",
     "main": "index.js",
     "scripts": {
         "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",

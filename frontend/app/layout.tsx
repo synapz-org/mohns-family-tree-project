@@ -21,8 +21,8 @@ const merriweather = Merriweather({
 
 export const metadata: Metadata = {
     title: {
-        default: 'Family Tree Manager - Mohns Family',
-        template: '%s | Family Tree Manager',
+        default: 'Mohns Family Tree - Family History & Stories',
+        template: '%s | Mohns Family Tree',
     },
     description: 'Comprehensive family tree management system for the Mohns family reunion project and ongoing genealogy coordination.',
     keywords: [
@@ -42,29 +42,29 @@ export const metadata: Metadata = {
         address: false,
         telephone: false,
     },
-    metadataBase: new URL('https://family-tree-manager.com'),
+    metadataBase: new URL('https://mohns.ca'),
     alternates: {
-        canonical: '/',
+        canonical: 'https://mohns.ca',
     },
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://family-tree-manager.com',
+        url: 'https://mohns.ca',
         title: 'Family Tree Manager - Mohns Family',
         description: 'Comprehensive family tree management system for the Mohns family reunion project.',
-        siteName: 'Family Tree Manager',
+        siteName: 'Mohns Family Tree',
         images: [
             {
                 url: '/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Family Tree Manager',
+                alt: 'Mohns Family Tree',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Family Tree Manager - Mohns Family',
+        title: 'Mohns Family Tree - Family History & Stories',
         description: 'Comprehensive family tree management system for the Mohns family reunion project.',
         images: ['/og-image.jpg'],
     },

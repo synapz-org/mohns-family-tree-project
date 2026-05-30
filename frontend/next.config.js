@@ -6,8 +6,8 @@ const nextConfig = {
     images: {
         domains: [
             'localhost',
-            'family-tree-manager.com',
-            'api.family-tree-manager.com',
+            'mohns.ca',
+            'api.mohns.ca',
             's3.amazonaws.com',
             'storage.googleapis.com',
         ],
