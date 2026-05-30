@@ -1,7 +1,7 @@
 {
-    "name": "family-tree-backend",
+    "name": "mohns-family-tree-backend",
     "version": "1.0.0",
-    "description": "Backend API for the Mohns Family Tree Management System",
+    "description": "Backend API for the Mohns Family Tree System",
     "main": "src/server.js",
     "scripts": {
         "dev": "nodemon src/server.js",
